@@ -1,0 +1,9 @@
+.idea
+node_modules
+tsconfig.tsbuildinfo
+dist
+yarn-error.log
+coverage
+lerna-debug.log
+.env
+.DS_STORE
