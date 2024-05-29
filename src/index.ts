@@ -7,7 +7,10 @@ import {
     Source,
 } from 'pmtiles';
 
-import { labels, noLabels } from 'protomaps-themes-base';
+// import { labels, noLabels } from 'protomaps-themes-base';
+
+// eslint-disable-next-line
+const themesBase = require('protomaps-themes-base');
 
 export const nativeDecompress = async (
     buf: ArrayBuffer,
@@ -91,10 +94,18 @@ const getSource = (version: string): Record<string, StyleSource> => ({
 export const styleWhatever = (style: string, version: string) => {
     return {
         version: 8,
-        layers: [...noLabels('basemap', style), ...labels('basemap', style)],
+        layers: [
+            // eslint-disable-next-line
+            ...themesBase.noLabels('basemap', style),
+            // eslint-disable-next-line
+            ...themesBase.labels('basemap', style),
+        ],
         glyphs: 'https://xzy.com/static/fonts/{fontstack}/{range}.pbf',
         sources: {
             ...getSource(version),
         },
     };
 };
+
+// eslint-disable-next-line
+console.log(themesBase.labels);
